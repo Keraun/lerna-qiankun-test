@@ -1,0 +1,30 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "install": "npm-run-all --serial install:*",
+    "install:main": "cd packages/mainapp && npm i",
+    "install:project1": "cd packages/subapp-project1 && npm i",
+    "install:project2": "cd packages/subapp-project2 && npm i",
+    "dev": " npm run start",
+    "start": "npm-run-all --parallel start:*",
+    "start:project1": "cd packages/subapp-project1 && npm run dev",
+    "start:project2": "cd packages/subapp-project2 && npm run dev",
+    "build": "npm-run-all build:* && bash ./scripts/bundle.sh",
+    "build:main": "cd packages/mainapp && npm run build",
+    "build:project1": "cd packages/subapp-project1 && npm run build",
+    "build:project2": "cd packages/subapp-project2 && npm run build"
+  },
+  "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "lerna": "^8.2.0",
+    "npm-run-all": "^4.1.5",
+    "vite-plugin-node-polyfills": "^0.23.0"
+  },
+  "dependencies": {
+    "stream-browserify": "^3.0.0"
+  }
+}
