@@ -2,21 +2,21 @@
   "name": "root",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "app/*"
   ],
   "scripts": {
     "install": "npm-run-all --serial install:*",
-    "install:main": "cd packages/mainapp && npm i",
-    "install:project1": "cd packages/subapp-project1 && npm i",
-    "install:project2": "cd packages/subapp-project2 && npm i",
+    "install:main": "cd app/mainapp && npm i",
+    "install:project1": "cd app/subapp-project1 && npm i",
+    "install:project2": "cd app/subapp-project2 && npm i",
     "dev": " npm run start",
     "start": "npm-run-all --parallel start:*",
-    "start:project1": "cd packages/subapp-project1 && npm run dev",
-    "start:project2": "cd packages/subapp-project2 && npm run dev",
+    "start:project1": "cd app/subapp-project1 && npm run dev",
+    "start:project2": "cd app/subapp-project2 && npm run dev",
     "build": "npm-run-all build:* && bash ./scripts/bundle.sh",
-    "build:main": "cd packages/mainapp && npm run build",
-    "build:project1": "cd packages/subapp-project1 && npm run build",
-    "build:project2": "cd packages/subapp-project2 && npm run build"
+    "build:main": "cd app/mainapp && npm run build",
+    "build:project1": "cd app/subapp-project1 && npm run build",
+    "build:project2": "cd app/subapp-project2 && npm run build"
   },
   "devDependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
